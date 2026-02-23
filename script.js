@@ -2,8 +2,8 @@ const products = [
     { 
         id: 1, 
         name: "Air Max Pro", 
-        price: 120, 
-        img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff", // Real shoe image
+        price: 7000, 
+        img: "blue-air.jpg", // Real shoe image
         stripeLink: "https://buy.stripe.com/YOUR_LINK_1" 
     },
     { 
