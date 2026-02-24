@@ -3,8 +3,7 @@ const products = [
         id: 1, 
         name: "Air Max Pro", 
         price: 7000, 
-        img: "blue-air.jpg", // Real shoe image
-        stripeLink: "https://buy.stripe.com/YOUR_LINK_1" 
+        img: "blue-air.jpg", // Real shoe image 
     },
     { 
         id: 2, 
@@ -12,7 +11,7 @@ const products = [
         price: 150, 
         img: "https://plus.unsplash.com/premium_photo-1670983858132-c2f3c4dbf08c?w=600&auto=format&fit=crop&q=
             60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fHNob2VzfGVufDB8fDB8fHww", 
-        stripeLink: "https://buy.stripe.com/test_dRm3co0cV2Xh6dC2MI6g800" 
+    
     },
      { 
         id: 3, 
@@ -20,7 +19,6 @@ const products = [
         price: 7000, 
         img: "https://images.unsplash.com/photo-1628253747716-0c4f5c90fdda?w=600&auto=format&fit=crop&q=60&ixlib=rb
             -4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHNob2VzfGVufDB8fDB8fHww", // Real shoe image
-        stripeLink: "https://buy.stripe.com/YOUR_LINK_1" 
     },
     { 
         id: 4, 
@@ -28,7 +26,7 @@ const products = [
         price: 7000, 
         img: "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=600&auto=format&fit=crop&q=60&ixlib=rb
             -4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNob2VzfGVufDB8fDB8fHww", // Real shoe image
-        stripeLink: "https://buy.stripe.com/YOUR_LINK_1" 
+        
     }
 ];
 
@@ -47,3 +45,22 @@ products.forEach(product => {
         </div>
     `;
 });
+// Function to add item to our 'Fake Database' (localStorage)
+function addToCart(name, price) {
+    // 1. Get existing cart data or create empty array
+    let cart = JSON.parse(localStorage.getItem('shoeCart')) || [];
+
+    // 2. Add new product to the array
+    cart.push({ name: name, price: price });
+
+    // 3. Save back to localStorage
+    localStorage.setItem('shoeCart', JSON.stringify(cart));
+
+    alert(name + " added to your database!");
+    updateCartCount();
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('shoeCart')) || [];
+    document.getElementById('cart-count').innerText = cart.length;
+}
