@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culture Square | Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,17 +11,25 @@
         <a href="index.html" class="logo">CULTURE SQUARE</a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
+            <li><a href="index.html">Shop</a></li> 
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
         </ul>
     </nav>
+
     <section class="hero">
         <h1>Welcome to Culture Square</h1>
         <p>Premium Sneakers for the Modern Streetwear Culture.</p>
-        <a href="shop.html" class="btn">Start Shopping</a>
+        <a href="cart.html" class="btn">Start Shopping</a>
     </section>
+
+    <section>
+        <h2 style="text-align:center; margin-top:20px;">Our Collection</h2>
+        <div id="product-list" class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px;">
+            </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
