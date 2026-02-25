@@ -1,7 +1,8 @@
 const shoes = [
     { id: 1, name: "Air Max Pro", price: 7999, img: "blue-air.jpg" },
     { id: 2, name: "Onitsuka Tiger", price: 5499, img: "onitsuka-tiger.jpg" },
-    { id: 3, name: "Neon Street", price: 6200, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" }
+    { id: 3, name: "Neon Street", price: 6200, img: "adidas-gazelle-shadow-brown.jpg" }
+    { id: 3, name: "Neon Street", price: 6200, img: "" }
 ];
 
 let cart = JSON.parse(localStorage.getItem('cultureCart')) || [];
