@@ -1,5 +1,5 @@
 const shoes = [
-    { id: 1, name: "Air Max Pro", price: 7999, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" },
+    { id: 1, name: "Air Max Pro", price: 7999, img: "blue-air.jpg" },
     { id: 2, name: "Urban Square", price: 5499, img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" },
     { id: 3, name: "Neon Street", price: 6200, img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" }
 ];
