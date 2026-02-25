@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Your Cart | SoleStyle</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <div class="logo"><a href="index.html">SoleStyle</a></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cart.html">Cart</a></li>
-        </ul>
-    </nav>
-
-    <section class="cart-container">
-        <h2>Your Shopping Cart</h2>
-        <div id="cart-items">
-            </div>
-        <button onclick="clearCart()" style="background:gray;">Empty Cart</button>
-    </section>
-
-    <script src="cart-logic.js"></script>
-</body>
-</html>
+<section>
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items" class="grid"></div>
+    <div id="total-price" style="margin-top:20px; text-align:right; font-size:20px;"></div>
+    
+    <div id="checkout-form" style="margin-top:40px; background:#1f1f1f; padding:20px; border-radius:10px;">
+        <h3>Checkout</h3>
+        <input type="text" placeholder="Full Name" id="cust-name">
+        <input type="text" placeholder="Shipping Address" id="cust-addr">
+        <button class="btn" onclick="placeOrder()">Place Order</button>
+    </div>
+</section>
+<script src="script.js"></script>
