@@ -1,66 +1,72 @@
-const products = [
-    { 
-        id: 1, 
-        name: "Air Max Pro", 
-        price: 7000, 
-        img: "blue-air.jpg", // Real shoe image 
-    },
-    { 
-        id: 2, 
-        name: "Ultra Boost", 
-        price: 150, 
-        img: "https://plus.unsplash.com/premium_photo-1670983858132-c2f3c4dbf08c?w=600&auto=format&fit=crop&q=
-            60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fHNob2VzfGVufDB8fDB8fHww", 
-    
-    },
-     { 
-        id: 3, 
-        name: "Air Pro", 
-        price: 7000, 
-        img: "https://images.unsplash.com/photo-1628253747716-0c4f5c90fdda?w=600&auto=format&fit=crop&q=60&ixlib=rb
-            -4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHNob2VzfGVufDB8fDB8fHww", // Real shoe image
-    },
-    { 
-        id: 4, 
-        name: "Woodland", 
-        price: 7000, 
-        img: "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=600&auto=format&fit=crop&q=60&ixlib=rb
-            -4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNob2VzfGVufDB8fDB8fHww", // Real shoe image
-        
-    }
+const shoes = [
+    { id: 1, name: "Air Max Pro", price: 7999, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" },
+    { id: 2, name: "Urban Square", price: 5499, img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" },
+    { id: 3, name: "Neon Street", price: 6200, img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" }
 ];
 
-const productList = document.getElementById('product-list');
+let cart = JSON.parse(localStorage.getItem('cultureCart')) || [];
 
-// Generate the product cards
-products.forEach(product => {
-    productList.innerHTML += `
+// 1. Update Cart Count Everywhere
+function updateUI() {
+    const count = document.getElementById('cart-count');
+    if(count) count.innerText = cart.length;
+}
+
+// 2. Display Shop Items
+if(document.getElementById('product-list')) {
+    document.getElementById('product-list').innerHTML = shoes.map(s => `
         <div class="card">
-            <img src="${product.img}" alt="${product.name}" style="width:100%; border-radius:10px;">
-            <h3>${product.name}</h3>
-            <p>$${product.price}</p>
-            <a href="${product.stripeLink}" target="_blank">
-                <button style="background: #6772e5;">Buy Now</button>
-            </a>
+            <img src="${s.img}">
+            <h3>${s.name}</h3>
+            <p>₹${s.price}</p>
+            <button class="btn" onclick="addToCart(${s.id})">Add to Cart</button>
         </div>
-    `;
-});
-// Function to add item to our 'Fake Database' (localStorage)
-function addToCart(name, price) {
-    // 1. Get existing cart data or create empty array
-    let cart = JSON.parse(localStorage.getItem('shoeCart')) || [];
-
-    // 2. Add new product to the array
-    cart.push({ name: name, price: price });
-
-    // 3. Save back to localStorage
-    localStorage.setItem('shoeCart', JSON.stringify(cart));
-
-    alert(name + " added to your database!");
-    updateCartCount();
+    `).join('');
 }
 
-function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem('shoeCart')) || [];
-    document.getElementById('cart-count').innerText = cart.length;
+// 3. Add to Cart function
+window.addToCart = (id) => {
+    const item = shoes.find(s => s.id === id);
+    cart.push(item);
+    localStorage.setItem('cultureCart', JSON.stringify(cart));
+    updateUI();
+    alert("Added to cart!");
+};
+
+// 4. Display Cart Items
+if(document.getElementById('cart-items')) {
+    const cartDiv = document.getElementById('cart-items');
+    if(cart.length === 0) {
+        cartDiv.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+        cartDiv.innerHTML = cart.map((item, index) => `
+            <div class="card">
+                <h3>${item.name}</h3>
+                <p>₹${item.price}</p>
+                <button onclick="removeItem(${index})" style="background:red; color:white; border:none; padding:5px; border-radius:3px; cursor:pointer;">Remove</button>
+            </div>
+        `).join('');
+        
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        document.getElementById('total-price').innerText = "Total: ₹" + total;
+    }
 }
+
+window.removeItem = (index) => {
+    cart.splice(index, 1);
+    localStorage.setItem('cultureCart', JSON.stringify(cart));
+    location.reload();
+};
+
+window.placeOrder = () => {
+    const name = document.getElementById('cust-name').value;
+    if(name && cart.length > 0) {
+        alert(`Thank you ${name}! Your order for "Culture Square" has been placed.`);
+        localStorage.removeItem('cultureCart');
+        window.location.href = "index.html";
+    } else {
+        alert("Please fill details and add items to cart.");
+    }
+};
+
+updateUI();
