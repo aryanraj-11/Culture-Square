@@ -88,3 +88,28 @@ nav ul {
     display: flex;
     list-style: none; /* Dots hatane ke liye */
 }
+/* Cart page spacing fix */
+.cart-container {
+    padding: 50px 10%;
+    background: #121212;
+    min-height: 100vh;
+    color: white;
+}
+
+#checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 30px auto;
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#checkout-form input {
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: 1px solid #444;
+}
