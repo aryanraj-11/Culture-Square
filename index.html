@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culture Square | Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo">CULTURE SQUARE</a>
+        <a href="index.html" class="logo">CULTURE <span>SQUARE</span></a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">Shop</a></li> 
             <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
             <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
         </ul>
     </nav>
@@ -21,14 +20,18 @@
     <section class="hero">
         <h1>Welcome to Culture Square</h1>
         <p>Premium Sneakers for the Modern Streetwear Culture.</p>
-        <a href="cart.html" class="btn">Start Shopping</a>
+        <a href="#products" class="btn">Shop Now</a>
     </section>
 
-    <section>
-        <h2 style="text-align:center; margin-top:20px;">Our Collection</h2>
-        <div id="product-list" class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px;">
+    <section id="products" style="padding: 50px 10%;">
+        <h2 style="text-align: center; color: #00ffcc; margin-bottom: 30px;">Our Collection</h2>
+        <div id="product-list" class="grid">
             </div>
     </section>
+
+    <footer>
+        <p>&copy; 2026 Culture Square | College Project</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
